@@ -2,6 +2,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
+import { StoreModule } from "@ngrx/store";
 
 import { BooksRoutingModule } from "./books-routing.module";
 import { BooksComponent } from "./books/books.component";
@@ -13,6 +14,7 @@ import { PagesPipe } from "./shared/pages.pipe";
 import { OrderBtnDirective } from "./shared/order-btn.directive";
 import { BookEditComponent } from "./book-edit/book-edit.component";
 import { BookNewComponent } from "./book-new/book-new.component";
+import { booksReducer, booksStoreName } from "./store/books.reducer";
 
 @NgModule({
   imports: [
@@ -20,7 +22,10 @@ import { BookNewComponent } from "./book-new/book-new.component";
     BooksRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    StoreModule.forFeature(booksStoreName,{
+      books: booksReducer
+    })
   ],
   declarations: [
     BooksComponent,

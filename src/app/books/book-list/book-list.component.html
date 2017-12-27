@@ -1,5 +1,6 @@
-<div *ngIf="books else noBooks">
-  <app-book-preview *ngFor="let book of books" [book]="book" (bookselected)="selectBook($event)"></app-book-preview>
+<div >
+  <!-- <app-book-preview *ngFor="let book of books" [book]="book" (bookselected)="selectBook($event)"></app-book-preview> -->
+  <app-book-preview *ngFor="let book of books$ | async" [book]="book" (bookselected)="selectBook($event)"></app-book-preview>
 </div>
 <ng-template #noBooks>
   no Books found. ;(
