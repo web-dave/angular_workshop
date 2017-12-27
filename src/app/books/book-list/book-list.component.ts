@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { BooksService } from "../shared/books.service";
+import { IBook } from "../shared/custom-types";
 
 @Component({
   selector: "app-book-list",
@@ -7,7 +8,7 @@ import { BooksService } from "../shared/books.service";
   styleUrls: ["./book-list.component.scss"]
 })
 export class BookListComponent implements OnInit {
-  books;
+  books: IBook[];
   constructor(private booksService: BooksService) {}
 
   ngOnInit() {

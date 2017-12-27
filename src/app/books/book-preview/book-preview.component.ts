@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
+import { IBook } from '../shared/custom-types';
 
 @Component({
   selector: "app-book-preview",
@@ -6,7 +7,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
   styleUrls: ["./book-preview.component.scss"]
 })
 export class BookPreviewComponent implements OnInit {
-  @Input() book;
+  @Input() book: IBook;
   @Output() bookselected = new EventEmitter();
   constructor() {}
 
