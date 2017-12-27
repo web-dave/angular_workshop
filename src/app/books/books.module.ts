@@ -3,6 +3,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { StoreModule } from "@ngrx/store";
+import { EffectsModule } from "@ngrx/effects";
 
 import { BooksRoutingModule } from "./books-routing.module";
 import { BooksComponent } from "./books/books.component";
@@ -15,6 +16,7 @@ import { OrderBtnDirective } from "./shared/order-btn.directive";
 import { BookEditComponent } from "./book-edit/book-edit.component";
 import { BookNewComponent } from "./book-new/book-new.component";
 import { booksReducer, booksStoreName } from "./store/books.reducer";
+import { BookEffects } from "./store/books.effects";
 
 @NgModule({
   imports: [
@@ -23,7 +25,8 @@ import { booksReducer, booksStoreName } from "./store/books.reducer";
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    StoreModule.forFeature(booksStoreName,{
+    EffectsModule.forFeature([BookEffects]),
+    StoreModule.forFeature(booksStoreName, {
       books: booksReducer
     })
   ],
