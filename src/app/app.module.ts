@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { MyNavComponent } from './my-nav/my-nav.component';
-import { BooksModule } from './books/books.module';
 import { AboutModule } from './about/about.module';
 
 
@@ -17,7 +16,6 @@ import { AboutModule } from './about/about.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BooksModule,
     AboutModule
   ],
   providers: [],
