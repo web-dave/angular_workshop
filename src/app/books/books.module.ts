@@ -1,3 +1,4 @@
+import { FormsModule } from '@angular/forms'
 import { HttpClientModule } from '@angular/common/http'
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -10,14 +11,16 @@ import { BookPreviewComponent } from './book-preview/book-preview.component';
 import { BookDetailsComponent } from './book-details/book-details.component';
 import { PagesPipe } from './shared/pages.pipe';
 import { OrderBtnDirective } from './shared/order-btn.directive';
+import { BookEditComponent } from './book-edit/book-edit.component';
 
 @NgModule({
   imports: [
     CommonModule,
     BooksRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule    
   ],
-  declarations: [BooksComponent, BookListComponent, BookPreviewComponent, BookDetailsComponent, PagesPipe, OrderBtnDirective],
+  declarations: [BooksComponent, BookListComponent, BookPreviewComponent, BookDetailsComponent, PagesPipe, OrderBtnDirective, BookEditComponent],
   exports: [BooksComponent],
   providers: [BooksService]
 })
