@@ -1,7 +1,10 @@
 <div *ngIf="books else noBooks">
   <app-book-preview *ngFor="let book of books" [book]="book" (bookselected)="selectBook($event)"></app-book-preview>
-  </div>
-
-  <ng-template #noBooks>
-    no Books found. ;(
-  </ng-template>
+</div>
+<ng-template #noBooks>
+  no Books found. ;(
+</ng-template>
+<hr>
+<a [routerLink]="['new']" class="btn btn-default btn-sm">
+  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+</a>
