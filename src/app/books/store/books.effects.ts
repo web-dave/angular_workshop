@@ -9,9 +9,16 @@ import { map } from "rxjs/operators";
 
 @Injectable()
 export class BookEffects {
-  // Listen for the LOAD_BOOKS action
+  //   @Effect({ dispatch: false })
+  //   loaded = this.actions$.ofType(BooksActions.READY_BOOKS)
+  //   .pipe(
+  //       map(
+  //           action => someService.method()
+  //       )
+  //   )
+
   @Effect()
-  login$: Observable<Action> = this.actions$
+  load$: Observable<Action> = this.actions$
     .ofType(BooksActions.LOAD_BOOKS)
     .pipe(map(action => new BooksActions.ReadyBooks()));
 
