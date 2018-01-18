@@ -24,7 +24,7 @@ export class BookEditComponent implements OnInit {
           this.booksService.getBook(params.isbn)
         )
       )
-      .subscribe(book => this.book = book as IBook);
+      .subscribe(book => (this.book = book as IBook));
   }
 
   saveBook(book) {
