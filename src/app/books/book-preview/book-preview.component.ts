@@ -1,5 +1,5 @@
 import { environment } from '../../../environments/environment'
-import { Component, EventEmitter, Input, OnInit, Output, ChangeDetectionStrategy } from '@angular/core'
+import { Component, EventEmitter, Input, OnInit, Output, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core'
 import { IBook } from '../shared/custom-types';
 import { OnChanges } from '@angular/core/src/metadata/lifecycle_hooks';
 
@@ -13,7 +13,7 @@ export class BookPreviewComponent implements OnInit, OnChanges {
   @Input() book: IBook;
   @Output() bookselected = new EventEmitter();
   btnId
-  constructor() { }
+  constructor(private cdr: ChangeDetectorRef) { }
 
   ngOnInit() {
     if (environment.production) {
@@ -22,6 +22,12 @@ export class BookPreviewComponent implements OnInit, OnChanges {
       this.btnId = 'details_' + this.book.isbn
     }
   }
+
+  trigger() {
+    console.log('trigger')
+    this.cdr.detectChanges()
+  }
+
 
   ngOnChanges(changes) {
     console.warn('-->', changes)

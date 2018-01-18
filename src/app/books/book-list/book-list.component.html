@@ -1,4 +1,4 @@
-<button (click)="ping()">trigger</button>
+<button (click)="ping()">ping</button>
 <div *ngIf="books else noBooks">
   <app-book-preview *ngFor="let book of books" [book]="book" (bookselected)="selectBook($event)"></app-book-preview>
 </div>
