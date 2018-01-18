@@ -5,8 +5,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class PagesPipe implements PipeTransform {
 
-  transform(value: any, args?: any): any {
-    return `${args}: ${value}`;
+  transform(value: any, arg: any = 'S.'): any {
+    return `${arg}: ${value}`;
   }
 
 }
