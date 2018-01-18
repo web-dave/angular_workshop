@@ -1,3 +1,4 @@
+import { environment } from '../../../environments/environment'
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
 import { IBook } from '../shared/custom-types';
 
@@ -9,9 +10,16 @@ import { IBook } from '../shared/custom-types';
 export class BookPreviewComponent implements OnInit {
   @Input() book: IBook;
   @Output() bookselected = new EventEmitter();
-  constructor() {}
+  btnId
+  constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    if (environment.production) {
+      this.btnId = 'foo'
+    } else {
+      this.btnId = 'details_' + this.book.isbn
+    }
+  }
 
   selectThisBook() {
     this.bookselected.emit(this.book);

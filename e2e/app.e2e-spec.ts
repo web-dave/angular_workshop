@@ -7,8 +7,15 @@ describe('angular-starter App', () => {
     page = new AppPage();
   });
 
+  // it('should display welcome message', () => {
+  //   page.navigateTo();
+
+  //   expect(page.getParagraphText()).toEqual('Welcome to app!');
+  // });
+
   it('should display welcome message', () => {
-    page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to app!');
+    page.navigateTo('/hannes');
+    expect(page.getUrl()).toEqual('http://localhost:49152/about')
   });
+
 });

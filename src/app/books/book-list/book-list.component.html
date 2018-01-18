@@ -1,7 +1,7 @@
 <div *ngIf="books else noBooks">
   <app-book-preview *ngFor="let book of books" [book]="book" (bookselected)="selectBook($event)"></app-book-preview>
-  </div>
+</div>
 
-  <ng-template #noBooks>
-    no Books found. ;(
-  </ng-template>
+<ng-template #noBooks>
+  no Books found. ;(
+</ng-template>
