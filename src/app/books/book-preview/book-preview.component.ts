@@ -1,13 +1,15 @@
 import { environment } from '../../../environments/environment'
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
+import { Component, EventEmitter, Input, OnInit, Output, ChangeDetectionStrategy } from '@angular/core'
 import { IBook } from '../shared/custom-types';
+import { OnChanges } from '@angular/core/src/metadata/lifecycle_hooks';
 
 @Component({
   selector: "app-book-preview",
   templateUrl: "./book-preview.component.html",
-  styleUrls: ["./book-preview.component.scss"]
+  styleUrls: ["./book-preview.component.scss"],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class BookPreviewComponent implements OnInit {
+export class BookPreviewComponent implements OnInit, OnChanges {
   @Input() book: IBook;
   @Output() bookselected = new EventEmitter();
   btnId
@@ -19,6 +21,10 @@ export class BookPreviewComponent implements OnInit {
     } else {
       this.btnId = 'details_' + this.book.isbn
     }
+  }
+
+  ngOnChanges(changes) {
+    console.warn('-->', changes)
   }
 
   selectThisBook() {
