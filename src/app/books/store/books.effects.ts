@@ -22,5 +22,5 @@ export class BookEffects {
     .ofType(BooksActions.LOAD_BOOKS)
     .pipe(map(action => new BooksActions.ReadyBooks()));
 
-  constructor(private actions$: Actions) {}
+  constructor(private actions$: Actions) { }
 }
