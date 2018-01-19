@@ -1,16 +1,21 @@
+import { LoadBooks } from '../store/books.actions'
+import { BooksState } from '../store/books.reducer'
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { IBook } from "./custom-types";
+import { Store } from "@ngrx/store";
 
 @Injectable()
 export class BooksService {
   restRoot = "http://localhost:4730/books";
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private store: Store<BooksState>) { }
 
   getBooks() {
     const url = this.restRoot;
-    return this.http.get<IBook[]>(url);
+    this.http.get<IBook[]>(url)
+      .subscribe(books => this.store.dispatch(new LoadBooks(books)));
+
   }
 
   getBook(isbn) {
