@@ -1,0 +1,15 @@
+import { Action } from "@ngrx/store";
+import { IBook } from "../shared/custom-types";
+
+export const LOAD_BOOKS = "[books] load books";
+export const READY_BOOKS = "[books] [effect] ready books";
+
+export class LoadBooks implements Action {
+    readonly type = LOAD_BOOKS;
+    constructor(public books: IBook[]) { }
+}
+
+export class ReadyBooks implements Action {
+    readonly type = READY_BOOKS;
+    constructor() { }
+}
