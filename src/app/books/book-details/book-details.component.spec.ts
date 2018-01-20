@@ -6,6 +6,8 @@ import { Directive, Input, Pipe, Injectable } from "@angular/core";
 import { RouterTestingModule } from "@angular/router/testing";
 import { BooksService } from "../shared/books.service";
 import { HttpClientModule } from "@angular/common/http";
+import { StoreModule } from "@ngrx/store";
+import { ActivatedRoute } from "@angular/router";
 
 @Pipe({
   name: "pages"
@@ -46,23 +48,27 @@ class OrderBtn {
 describe("BookDetailsComponent", () => {
   let component: BookDetailsComponent;
   let fixture: ComponentFixture<BookDetailsComponent>;
-  let service: BooksService;
+  let booksService: BooksService;
+  let route: ActivatedRoute
 
   beforeEach(
     async(() => {
       TestBed.configureTestingModule({
         declarations: [BookDetailsComponent, OrderBtn, Pages],
-        imports: [RouterTestingModule, HttpClientModule],
+        imports: [RouterTestingModule, HttpClientModule, StoreModule.forRoot({})],
         providers: [BooksService]
       }).compileComponents();
+
+      booksService = TestBed.get(BooksService);
+      route = TestBed.get(ActivatedRoute)
+      spyOn(booksService, "getBook").and.returnValue(Observable.of(book));
+      spyOn(route, 'params').and.returnValue(Observable.of({ isbn: 'test' }))
     })
   );
 
   beforeEach(() => {
-    service = TestBed.get(BooksService);
     fixture = TestBed.createComponent(BookDetailsComponent);
     component = fixture.componentInstance;
-    spyOn(service, "getBook").and.returnValue(Observable.of(book));
     fixture.detectChanges();
   });
 
