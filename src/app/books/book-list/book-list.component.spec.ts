@@ -8,7 +8,7 @@ import { BooksService } from '../shared/books.service';
 import { BooksState, booksStoreName } from '../store/books.reducer';
 import { booksStub, BooksServiceStub } from '../shared/books.service.stub';
 import { Observable } from 'rxjs';
-import { BookPreviewComponent } from '../shared/components.stubs';
+import { BookPreviewComponent } from '../shared/components.stubs.spec';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterTestingModule } from '@angular/router/testing';
 
