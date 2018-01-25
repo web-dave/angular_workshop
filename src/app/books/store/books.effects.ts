@@ -9,18 +9,18 @@ import { map } from "rxjs/operators";
 
 @Injectable()
 export class BookEffects {
-    //   @Effect({ dispatch: false })
-    //   loaded = this.actions$.ofType(READY_BOOKS)
-    //   .pipe(
-    //       map(
-    //           action => someService.method()
-    //       )
-    //   )
+  //   @Effect({ dispatch: false })
+  //   loaded = this.actions$.ofType(READY_BOOKS)
+  //   .pipe(
+  //       map(
+  //           action => someService.method()
+  //       )
+  //   )
 
-    @Effect()
-    load$: Observable<Action> = this.actions$
-        .ofType(LOAD_BOOKS)
-        .pipe(map(action => new ReadyBooks()));
+  @Effect()
+  load$: Observable<Action> = this.actions$
+    .ofType(LOAD_BOOKS)
+    .pipe(map(action => new ReadyBooks()));
 
-    constructor(private actions$: Actions) { }
+  constructor(private actions$: Actions) {}
 }

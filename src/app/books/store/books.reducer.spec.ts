@@ -2,8 +2,6 @@ import { booksReducer, initialState } from "./books.reducer";
 import { booksStub } from "../shared/books.service.stub";
 import { LOAD_BOOKS } from "./books.actions";
 
-let oldstate = { books: booksStub };
-
 describe("booksReducer", () => {
   it("should load books", () => {
     let action = { type: LOAD_BOOKS, books: booksStub };
