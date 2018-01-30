@@ -45,7 +45,7 @@ class OrderBtn {
   @Input() orderBtn: any;
 }
 
-fdescribe("BookDetailsComponent", () => {
+describe("BookDetailsComponent", () => {
   let component: BookDetailsComponent;
   let fixture: ComponentFixture<BookDetailsComponent>;
   let booksService: BooksService;
