@@ -50,6 +50,7 @@ fdescribe("BookDetailsComponent", () => {
   let fixture: ComponentFixture<BookDetailsComponent>;
   let booksService: BooksService;
   let route: ActivatedRoute;
+  let serviceSpy: jasmine.Spy;
 
   beforeEach(
     async(() => {
@@ -88,7 +89,9 @@ fdescribe("BookDetailsComponent", () => {
       }).compileComponents();
 
       booksService = TestBed.get(BooksService);
-      spyOn(booksService, "getBook").and.returnValue(Observable.of(book));
+      serviceSpy = spyOn(booksService, "getBook").and.returnValue(
+        Observable.of(book)
+      );
     })
   );
 
@@ -104,5 +107,9 @@ fdescribe("BookDetailsComponent", () => {
 
   it("should get a Book", () => {
     expect(component.book.isbn).toBe(book.isbn);
+  });
+
+  it("should read a book via BookData service", () => {
+    expect(serviceSpy.calls.argsFor(0)).toEqual(["test"]);
   });
 });
