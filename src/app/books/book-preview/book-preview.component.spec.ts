@@ -1,17 +1,19 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { BookPreviewComponent } from './book-preview.component';
+import { BookPreviewComponent } from "./book-preview.component";
+import { bookMock } from "../shared/books.service.stub";
 
-describe('BookPreviewComponent', () => {
+describe("BookPreviewComponent", () => {
   let component: BookPreviewComponent;
   let fixture: ComponentFixture<BookPreviewComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ BookPreviewComponent ]
+  beforeEach(
+    async(() => {
+      TestBed.configureTestingModule({
+        declarations: [BookPreviewComponent]
+      }).compileComponents();
     })
-    .compileComponents();
-  }));
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(BookPreviewComponent);
@@ -19,7 +21,15 @@ describe('BookPreviewComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
+  });
+
+  it("should trigger a event and set the book", () => {
+    component.book = bookMock;
+
+    fixture.detectChanges();
+    component.selectThisBook();
+    // expect(component.bookselected).toBe(bookMock);
   });
 });

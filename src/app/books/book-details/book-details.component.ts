@@ -20,9 +20,10 @@ export class BookDetailsComponent implements OnInit {
   ngOnInit() {
     this.route.params
       .pipe(
-        mergeMap((params: { isbn: string }) =>
-          this.booksService.getBook(params.isbn)
-        )
+        mergeMap((params: { isbn: string }) => {
+          console.log(params);
+          return this.booksService.getBook(params.isbn);
+        })
       )
       .subscribe(book => {
         this.book = book as IBook;

@@ -45,24 +45,50 @@ class OrderBtn {
   @Input() orderBtn: any;
 }
 
-describe("BookDetailsComponent", () => {
+fdescribe("BookDetailsComponent", () => {
   let component: BookDetailsComponent;
   let fixture: ComponentFixture<BookDetailsComponent>;
   let booksService: BooksService;
-  let route: ActivatedRoute
+  let route: ActivatedRoute;
 
   beforeEach(
     async(() => {
       TestBed.configureTestingModule({
         declarations: [BookDetailsComponent, OrderBtn, Pages],
-        imports: [RouterTestingModule, HttpClientModule, StoreModule.forRoot({})],
-        providers: [BooksService]
+        imports: [
+          RouterTestingModule,
+          HttpClientModule,
+          StoreModule.forRoot({})
+        ],
+        providers: [
+          BooksService,
+          {
+            provide: ActivatedRoute,
+            useValue: {
+              data: {
+                subscribe: (fn: (value) => void) => fn({})
+              },
+              params: Observable.of({ isbn: "test" }),
+              snapshot: {
+                url: [
+                  {
+                    path: "foo"
+                  },
+                  {
+                    path: "bar"
+                  },
+                  {
+                    path: "baz"
+                  }
+                ]
+              }
+            }
+          }
+        ]
       }).compileComponents();
 
       booksService = TestBed.get(BooksService);
-      route = TestBed.get(ActivatedRoute)
       spyOn(booksService, "getBook").and.returnValue(Observable.of(book));
-      spyOn(route, 'params').and.returnValue(Observable.of({ isbn: 'test' }))
     })
   );
 
