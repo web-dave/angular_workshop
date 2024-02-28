@@ -2,7 +2,7 @@
 
 /*** Header Styles ***/
 header {
-  @include object(100vw, 160px, $bg);
+  @include object(100vw, 160px, $blue);
   display: flex;
 }
 
@@ -40,6 +40,10 @@ ul {
   @include object(55px, 55px, $accent);
   border-radius: 50%;
   cursor: pointer;
+  font-size: 45px;
+  text-align: center;
+  background-image: url(../../assets/logo.png);
+  background-size: contain;
 }
 
 /*** Menu Styles ***/
@@ -56,6 +60,7 @@ li {
     display: block;
     border-radius: 90px;
     text-align: center;
+    background-color: $blue;
   }
 }
 
