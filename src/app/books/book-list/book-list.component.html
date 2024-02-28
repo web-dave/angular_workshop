@@ -1,6 +1,3 @@
 @for (book of books; track $index) {
-<div class="book">
-  <strong>{{ book.title }}</strong> <br />
-  <small>{{ book.subtitle }}</small> <a>more</a>
-</div>
+<app-book-preview [book]="book" (bookSelected)="selectBook($event)" />
 }
