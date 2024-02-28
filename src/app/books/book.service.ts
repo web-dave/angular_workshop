@@ -5,7 +5,7 @@ import { Injectable, inject } from '@angular/core';
   providedIn: 'root',
 })
 export class BookService {
-  http = inject(HttpClient);
+  private http = inject(HttpClient);
 
   getAll() {
     return this.http.get<any>('http://localhost:4730/books');
