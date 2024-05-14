@@ -4,15 +4,33 @@ import { BookPreviewComponent } from '../book-preview/book-preview.component';
 import { IBook } from '../models/book.interface';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BookDetailsComponent } from '../book-details/book-details.component';
+import { BookFilterPipe } from '../book-filter.pipe';
+import { JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-book-list',
   standalone: true,
-  imports: [BookPreviewComponent, BookDetailsComponent],
+  imports: [
+    BookPreviewComponent,
+    BookDetailsComponent,
+    BookFilterPipe,
+    JsonPipe,
+  ],
   templateUrl: './book-list.component.html',
   styleUrl: './book-list.component.scss',
 })
 export class BookListComponent {
+  searchStr = '';
+  field = 'title';
+
+  setField(event: Event) {
+    this.field = (event.target as HTMLInputElement).value;
+  }
+
+  setSearchStr(event: Event) {
+    this.searchStr = (event.target as HTMLInputElement).value;
+  }
+
   books: IBook[] = [];
   bar = 0;
   // selectedIsbn: string = '';

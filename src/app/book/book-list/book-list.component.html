@@ -1,4 +1,10 @@
-@for (book of books; track $index) {
+<input type="text" [value]="searchStr" (input)="setSearchStr($event)" /> <br />
+<input type="radio" name="field" value="title" (change)="setField($event)" />
+<input type="radio" name="field" value="subtitle" (change)="setField($event)" />
+{{ field }}
+<!-- {{ books | bookFilter : searchStr | json }} -->
+
+@for (book of books |bookFilter:searchStr:field; track $index) {
 <app-book-preview
   [book]="book"
   [book_]="book"

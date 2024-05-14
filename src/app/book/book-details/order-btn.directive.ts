@@ -14,7 +14,7 @@ import { fromEvent } from 'rxjs';
   standalone: true,
 })
 export class OrderBtnDirective implements OnChanges {
-  @Input() orderBtn: string = '';
+  @Input() btnTxt: string = '';
   @HostListener('mouseenter', ['$event.target'])
   bla(target: HTMLDivElement) {
     target.style.backgroundColor = 'hotpink';
@@ -31,10 +31,10 @@ export class OrderBtnDirective implements OnChanges {
   constructor() {
     this.hostref.nativeElement.appendChild(this.orderBtnElement);
     fromEvent(this.orderBtnElement, 'click').subscribe(() =>
-      console.log('this.orderBtn:', this.orderBtn)
+      console.log('this.orderBtn:', this.btnTxt)
     );
   }
   ngOnChanges(changes: SimpleChanges): void {
-    this.orderBtnElement.innerText = this.orderBtn;
+    this.orderBtnElement.innerText = this.btnTxt;
   }
 }
