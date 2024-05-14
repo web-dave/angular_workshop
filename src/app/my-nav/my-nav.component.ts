@@ -8,4 +8,6 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   templateUrl: './my-nav.component.html',
   styleUrl: './my-nav.component.scss',
 })
-export class MyNavComponent {}
+export class MyNavComponent {
+  value = Math.random();
+}
