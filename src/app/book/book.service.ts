@@ -13,4 +13,9 @@ export class BookService {
     const url = 'http://localhost:4730/books';
     return this.service.get<IBook[]>(url);
   }
+
+  getBook(isbn: string): Observable<IBook> {
+    const url = 'http://localhost:4730/books/' + isbn;
+    return this.service.get<IBook>(url);
+  }
 }

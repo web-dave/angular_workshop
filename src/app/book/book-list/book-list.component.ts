@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { BookService } from '../book.service';
 import { BookPreviewComponent } from '../book-preview/book-preview.component';
 import { IBook } from '../models/book.interface';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-book-list',
@@ -13,6 +14,10 @@ import { IBook } from '../models/book.interface';
 export class BookListComponent {
   books: IBook[] = [];
   bar = 0;
+
+  router = inject(Router);
+  route = inject(ActivatedRoute);
+
   foo = inject(BookService)
     .getBooks()
     .subscribe((data) => (this.books = data));
@@ -23,6 +28,6 @@ export class BookListComponent {
   // }
 
   pong(data: IBook) {
-    console.table(data);
+    this.router.navigate([data.isbn], { relativeTo: this.route });
   }
 }
