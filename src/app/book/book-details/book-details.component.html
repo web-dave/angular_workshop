@@ -1,2 +1,10 @@
 <p>book-details works!</p>
-<pre>{{ book$ | async | json }}</pre>
+@if(book$ | async; as book){
+<pre>{{ book | json }}</pre>
+<h6>{{ numPages | pages : "Number of pages" }}</h6>
+<h6>{{ transform(numPages, "Number of pages") }}</h6>
+
+} @if(book){
+{{ book.title }}
+
+}
