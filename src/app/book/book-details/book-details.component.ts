@@ -1,5 +1,4 @@
 import { Component, Input, OnInit, inject } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
 import { IBook } from '../models/book.interface';
 import { BookService } from '../book.service';
 import { JsonPipe } from '@angular/common';
@@ -11,7 +10,7 @@ import { JsonPipe } from '@angular/common';
   templateUrl: './book-details.component.html',
   styleUrl: './book-details.component.scss',
 })
-export class BookDetailsComponent {
+export class BookDetailsComponent implements OnInit {
   @Input() isbn: string = '';
   book: IBook | undefined;
 
