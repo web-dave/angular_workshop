@@ -11,11 +11,12 @@ import {
   signal,
 } from '@angular/core';
 import { IBook } from '../models/book.interface';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-book-preview',
   standalone: true,
-  imports: [],
+  imports: [RouterOutlet],
   templateUrl: './book-preview.component.html',
   styleUrl: './book-preview.component.scss',
 })
