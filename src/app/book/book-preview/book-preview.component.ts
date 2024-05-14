@@ -10,6 +10,7 @@ import {
   output,
   signal,
 } from '@angular/core';
+import { IBook } from '../models/book.interface';
 
 @Component({
   selector: 'app-book-preview',
@@ -20,15 +21,16 @@ import {
 })
 export class BookPreviewComponent {
   // Signals beispiel
-  book_ = input<any>();
-  bookSelected_ = output<any>();
+  book_ = input.required<IBook>();
+  bookSelected_ = output<IBook>();
 
   value = input(1);
   valueChange = output<number>();
 
   data = model(2);
 
-  @Input() book: any;
+  @Input({ required: true }) book!: IBook;
+
   @Output() bookSelected = new EventEmitter();
 
   ping() {
@@ -39,5 +41,5 @@ export class BookPreviewComponent {
   // ngOnChanges(changes: SimpleChanges): void {
   //   this.value.set(this.book);
   // }
-  // value = signal({} as any);
+  // value = signal({} as IBook);
 }

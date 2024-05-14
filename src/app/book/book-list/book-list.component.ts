@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { BookService } from '../book.service';
 import { BookPreviewComponent } from '../book-preview/book-preview.component';
+import { IBook } from '../models/book.interface';
 
 @Component({
   selector: 'app-book-list',
@@ -10,7 +11,7 @@ import { BookPreviewComponent } from '../book-preview/book-preview.component';
   styleUrl: './book-list.component.scss',
 })
 export class BookListComponent {
-  books: any;
+  books: IBook[] = [];
   bar = 0;
   foo = inject(BookService)
     .getBooks()
@@ -21,7 +22,7 @@ export class BookListComponent {
   //   this.service.getBooks().subscribe((data) => (this.books = data));
   // }
 
-  pong(data: any) {
+  pong(data: IBook) {
     console.table(data);
   }
 }
