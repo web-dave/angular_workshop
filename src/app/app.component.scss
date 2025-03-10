@@ -1,5 +1,5 @@
-@import "../utils";
-
 .content {
-  @include center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
