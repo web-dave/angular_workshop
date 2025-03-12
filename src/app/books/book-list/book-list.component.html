@@ -1,9 +1,6 @@
 <p>book-list works!</p>
 <ul>
   @for (book of books; track book) {
-  <li class="book">
-    <strong>{{ book.title }}</strong> <br />
-    <small>{{ book.subtitle }}</small>
-  </li>
+  <app-book-preview [book]="book" (bookSelected)="goTo($event)" />
   }
 </ul>
