@@ -12,4 +12,7 @@ export class BookService {
   getBooks(): Observable<IBook[]> {
     return this.service.get<IBook[]>('api/');
   }
+  getBook(isbn: string): Observable<IBook> {
+    return this.service.get<IBook>('api/' + isbn);
+  }
 }
