@@ -1,4 +1,4 @@
-@if(!!book){
+@if(book$ | async; as book){
 <h3>{{ book.title }}</h3>
 <h4>{{ book.subtitle }}</h4>
 <p>{{ book.abstract }}</p>
@@ -6,3 +6,5 @@
 <!-- <h5>{{ transform(book.numPages) }}</h5> -->
 <img [src]="book.cover" [alt]="book.title" />
 } @else { Waiting.... }
+
+<!-- {{ book | json }} -->
