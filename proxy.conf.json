@@ -1,0 +1,11 @@
+{
+  "/api": {
+    "pathRewrite": {
+      "^/api/": "/"
+    },
+    "target": "http://localhost:4730/books",
+    "secure": true,
+    "changeOrigin": true,
+    "loglevel": "debug"
+  }
+}
