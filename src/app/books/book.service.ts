@@ -10,6 +10,6 @@ export class BookService {
   service = inject(HttpClient);
 
   getBooks() {
-    return this.service.get<any>('http://localhost:4730/books');
+    return this.service.get<any>('api/');
   }
 }

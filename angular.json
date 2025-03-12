@@ -64,7 +64,8 @@
               "buildTarget": "angular-workshop:build:production"
             },
             "development": {
-              "buildTarget": "angular-workshop:build:development"
+              "buildTarget": "angular-workshop:build:development",
+              "proxyConfig": "proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"
