@@ -2,6 +2,9 @@ import { Component, inject, OnInit } from '@angular/core';
 import { IBook } from '../book';
 import { ActivatedRoute } from '@angular/router';
 import { BookService } from '../book.service';
+import { AsyncPipe, JsonPipe } from '@angular/common';
+import { PagesPipe } from '../pages.pipe';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-book-details',
