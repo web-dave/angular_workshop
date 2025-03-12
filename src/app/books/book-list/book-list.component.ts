@@ -1,6 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { BookService } from '../book.service';
 import { BookPreviewComponent } from '../book-preview/book-preview.component';
+import { IBook } from '../book';
 
 @Component({
   selector: 'app-book-list',
@@ -9,7 +10,7 @@ import { BookPreviewComponent } from '../book-preview/book-preview.component';
   styleUrl: './book-list.component.scss',
 })
 export class BookListComponent implements OnInit {
-  books: any[] = [];
+  books: IBook[] = [];
   service = inject(BookService);
 
   getBooks() {
@@ -20,7 +21,7 @@ export class BookListComponent implements OnInit {
     this.getBooks();
   }
 
-  goTo(book: any) {
+  goTo(book: IBook) {
     console.table(book);
   }
 }

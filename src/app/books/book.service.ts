@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
+import { IBook } from './book';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -7,7 +9,7 @@ import { inject, Injectable } from '@angular/core';
 export class BookService {
   service = inject(HttpClient);
 
-  getBooks() {
-    return this.service.get<any>('api/');
+  getBooks(): Observable<IBook[]> {
+    return this.service.get<IBook[]>('api/');
   }
 }
