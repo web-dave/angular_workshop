@@ -6,10 +6,11 @@ import { BookService } from '../book.service';
 import { AsyncPipe, JsonPipe } from '@angular/common';
 import { PagesPipe } from '../pages.pipe';
 import { Observable } from 'rxjs';
+import { OrderBtnDirective } from './order-btn.directive';
 
 @Component({
   selector: 'app-book-details',
-  imports: [PagesPipe, AsyncPipe],
+  imports: [PagesPipe, AsyncPipe, OrderBtnDirective],
   templateUrl: './book-details.component.html',
   styleUrl: './book-details.component.scss',
 })
