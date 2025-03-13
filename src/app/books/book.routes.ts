@@ -5,6 +5,7 @@ import { FavComponent } from './fav/fav.component';
 import { BookDetailsComponent } from './book-details/book-details.component';
 import { BookEditComponent } from './book-edit/book-edit.component';
 import { BookNewComponent } from './book-new/book-new.component';
+import { leaveGuard } from './leave.guard';
 
 const bookRoutes: Routes = [
   {
@@ -18,6 +19,7 @@ const bookRoutes: Routes = [
       {
         path: 'new',
         component: BookNewComponent,
+        canDeactivate: [leaveGuard],
       },
       {
         path: 'fav',

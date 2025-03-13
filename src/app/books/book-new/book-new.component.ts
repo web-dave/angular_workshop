@@ -24,7 +24,7 @@ const authorValidator: ValidatorFn = (
 };
 
 const authorValidatorFactory =
-  (authors: string[]) =>
+  (authors: string[]): ValidatorFn =>
   (control: AbstractControl): ValidationErrors | null => {
     // const authors = ['peter', 'paul', 'marie'];
     const result = authors.includes(control.value.toLowerCase());
@@ -57,9 +57,15 @@ export class BookNewComponent implements OnInit {
     userId: [0, []],
   });
 
+  saved = false;
+
   service = inject(BookService);
   route = inject(ActivatedRoute);
   router = inject(Router);
+
+  saveToLeave() {
+    return this.saved || this.newBookForm.pristine;
+  }
 
   ngOnInit(): void {
     // this.newBookForm.get('author')
@@ -93,10 +99,9 @@ export class BookNewComponent implements OnInit {
 
   saveBook() {
     const data: IBook = this.newBookForm.getRawValue();
-    this.service
-      .createBook(data)
-      .subscribe((data) =>
-        this.router.navigate(['..', data.isbn], { relativeTo: this.route })
-      );
+    this.service.createBook(data).subscribe((data) => {
+      this.saved = true;
+      this.router.navigate(['..', data.isbn], { relativeTo: this.route });
+    });
   }
 }
