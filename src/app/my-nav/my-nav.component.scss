@@ -1,15 +1,15 @@
 @use "sass:color";
-@import "../../utils";
+@use "../../utils";
 
 /*** Header Styles ***/
 header {
-  @include object(100vw, 160px, $bg);
+  @include utils.object(100vw, 160px, utils.$bg);
   display: flex;
 }
 
 /*** Navigation Styles ***/
 nav {
-  @include object(100vw, 160px, $nav-bg);
+  @include utils.object(100vw, 160px, utils.$nav-bg);
   display: grid;
   grid-template-columns: 1fr 1fr;
   position: fixed;
@@ -38,7 +38,7 @@ ul {
 }
 
 #logo {
-  @include object(55px, 55px, $accent);
+  @include utils.object(55px, 55px, utils.$accent);
   border-radius: 50%;
   cursor: pointer;
 }
@@ -53,7 +53,7 @@ li {
   margin-left: 20px;
   list-style: none;
   a {
-    @include object(80px, 20px, $accent);
+    @include utils.object(80px, 20px, utils.$accent);
     display: block;
     border-radius: 90px;
     text-align: center;
@@ -65,8 +65,12 @@ li {
 }
 
 #menu-toggle {
-  @include object(55px, 55px, color.adjust($nav-bg, $lightness: -5%));
-  @include center;
+  @include utils.object(
+    55px,
+    55px,
+    color.adjust(utils.$nav-bg, $lightness: -5%)
+  );
+  @include utils.center;
   border-radius: 50%;
   cursor: pointer;
   display: none;
@@ -90,7 +94,7 @@ li {
 }
 
 .bar {
-  @include object(25px, 2px, $accent);
+  @include utils.object(25px, 2px, utils.$accent);
   transition: 0.3s ease-in-out;
   &:nth-child(2) {
     width: 20px;
@@ -103,13 +107,13 @@ li {
 
 /*** Hero Section Styles ***/
 #hero-section {
-  @include object(100vw, calc(100vh - 160px), null);
-  @include center;
+  @include utils.object(100vw, calc(100vh - 160px), null);
+  @include utils.center;
   margin-top: 160px;
 }
 
 #head-line {
-  @include object(520px, 30px, $accent);
+  @include utils.object(520px, 30px, utils.$accent);
   border-radius: 90px;
   position: relative;
   &:before,
@@ -119,30 +123,30 @@ li {
     border-radius: 90px;
   }
   &:before {
-    @include object(360px, null, $accent);
-    @include transPos(-60px, null, null, 50%, -50%, 0);
+    @include utils.object(360px, null, utils.$accent);
+    @include utils.transPos(-60px, null, null, 50%, -50%, 0);
   }
   &:after {
-    @include object(200px, null, $accent);
-    @include transPos(null, null, -60px, 50%, -50%, 0);
+    @include utils.object(200px, null, utils.$accent);
+    @include utils.transPos(null, null, -60px, 50%, -50%, 0);
   }
 }
 
 /*** Section Styles ***/
 section {
-  @include object(100vw, calc(100vh - 100px), null);
+  @include utils.object(100vw, calc(100vh - 100px), null);
   display: flex;
   justify-content: center;
   &:nth-child(odd) {
-    background: $pink;
+    background: utils.$pink;
   }
   &:nth-child(even) {
-    background: $aqua;
+    background: utils.$aqua;
   }
 }
 
 #heading {
-  @include object(120px, 20px, $accent);
+  @include utils.object(120px, 20px, utils.$accent);
   border-radius: 90px;
   margin-top: 40px;
 }
@@ -155,8 +159,8 @@ section {
   }
   ul {
     display: inline-block;
-    @include object(100vw, 0, $aqua);
-    @include transPos(160px, null, null, null, null, null);
+    @include utils.object(100vw, 0, utils.$aqua);
+    @include utils.transPos(160px, null, null, null, null, null);
     box-shadow: 0 5px 30px -4px rgba(#000, 0.2);
     transition: all 0.3s;
     &.showMenu {
@@ -169,7 +173,7 @@ section {
     }
   }
   li {
-    @include object(50%, 80px, null);
+    @include utils.object(50%, 80px, null);
     float: left;
     padding-left: 40px;
     opacity: 0;

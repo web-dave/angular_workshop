@@ -1,7 +1,7 @@
-@import "../../../utils";
+@use "../../../utils";
 :host {
   display: block;
-  @include object(100%, 60px, $aqua);
+  @include utils.object(100%, 60px, utils.$aqua);
   border-radius: 90px;
   margin-top: 10px;
   padding-left: 45px;
