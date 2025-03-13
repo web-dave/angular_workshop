@@ -1,3 +1,6 @@
-input.ng-invalid {
-  border-width: 5px;
+input.ng-valid + .error {
+  display: none;
+}
+input.ng-invalid + .error {
+  display: inline;
 }

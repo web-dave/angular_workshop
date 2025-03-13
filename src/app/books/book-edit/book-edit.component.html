@@ -8,9 +8,11 @@
     [(ngModel)]="book.title"
     #title="ngModel"
   />
-  @if(!title.valid){
+  <label class="error">⚠️</label>
+  <!-- @if(!title.valid){
   <span>Argh! nicht valide!</span>
-  }
+  } -->
+  <br />
   <button type="submit" [disabled]="!editForm.valid">Save</button>
 </form>
 <pre>{{ editForm.value | json }}</pre>
