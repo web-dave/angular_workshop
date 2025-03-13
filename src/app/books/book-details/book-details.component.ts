@@ -1,4 +1,4 @@
-import { Component, DestroyRef, inject, OnInit } from '@angular/core';
+import { Component, DestroyRef, inject, input, OnInit } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { IBook } from '../book';
 import { ActivatedRoute, RouterLink } from '@angular/router';
@@ -15,21 +15,22 @@ import { OrderBtnDirective } from './order-btn.directive';
   styleUrl: './book-details.component.scss',
 })
 export class BookDetailsComponent implements OnInit {
+  isbn = input.required<string>();
   _book?: IBook;
   book$!: Observable<IBook>;
-  route = inject(ActivatedRoute);
+  // route = inject(ActivatedRoute);
   service = inject(BookService);
   dRef = inject(DestroyRef);
   ngOnInit(): void {
-    const isbn = this.route.snapshot.params['isbn'];
-    this.book$ = this.service.getBook(isbn);
-    this.service
-      .getBook(isbn)
-      .pipe(takeUntilDestroyed(this.dRef))
-      .subscribe((data) => {
-        console.log('==>', data);
-        this._book = data;
-      });
+    // const isbn = this.route.snapshot.params['isbn'];
+    this.book$ = this.service.getBook(this.isbn());
+    // this.service
+    //   .getBook(isbn)
+    //   .pipe(takeUntilDestroyed(this.dRef))
+    //   .subscribe((data) => {
+    //     console.log('==>', data);
+    //     this._book = data;
+    //   });
 
     // setInterval(() => {
     //   if (this.book) {

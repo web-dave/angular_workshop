@@ -1,7 +1,7 @@
 <p>book-list works!</p>
 <a routerLink="new">Neu</a>
 <ul>
-  @for (book of books; track book) {
+  @for (book of books(); track book) {
   <app-book-preview [book]="book" (bookSelected)="goTo($event)" />
   }
 </ul>

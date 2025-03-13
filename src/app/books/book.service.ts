@@ -10,7 +10,7 @@ export class BookService {
   service = inject(HttpClient);
 
   getBooks(): Observable<IBook[]> {
-    return this.service.get<IBook[]>('api/');
+    return this.service.get<IBook[]>('api/').pipe();
   }
   getBook(isbn: string): Observable<IBook> {
     return this.service.get<IBook>('api/' + isbn);

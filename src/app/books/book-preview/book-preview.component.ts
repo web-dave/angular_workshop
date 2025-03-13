@@ -1,4 +1,11 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  input,
+  Input,
+  output,
+  Output,
+} from '@angular/core';
 import { IBook } from '../book';
 
 @Component({
@@ -8,10 +15,12 @@ import { IBook } from '../book';
   styleUrl: './book-preview.component.scss',
 })
 export class BookPreviewComponent {
-  @Input({ required: true }) book!: IBook;
-  @Output() bookSelected = new EventEmitter<IBook>();
+  book = input.required<IBook>();
+  bookSelected = output<IBook>();
 
   goTo() {
-    this.bookSelected.emit(this.book);
+    if (this.book()) {
+      this.bookSelected.emit(this.book());
+    }
   }
 }
