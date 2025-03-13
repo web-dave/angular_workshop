@@ -1,0 +1,6 @@
+input.ng-valid + .error {
+  display: none;
+}
+input.ng-invalid.ng-dirty + .error {
+  display: inline;
+}

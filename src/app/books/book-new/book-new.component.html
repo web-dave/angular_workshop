@@ -1,0 +1,18 @@
+<form [formGroup]="newBookForm" (ngSubmit)="saveBook()">
+  <label for="title">* Title</label>
+  <input type="text" formControlName="title" /><label class="error">⚠️</label
+  ><br />
+  <label for="isbn">* ISBN</label>
+  <input type="text" formControlName="isbn" /><label class="error">⚠️</label
+  ><br />
+  <label for="abstract">* Abstract</label>
+  <input type="text" formControlName="abstract" /><label class="error">⚠️</label
+  ><br />
+  <label for="author">* Author</label>
+  <input type="text" formControlName="author" [disabled]="true" /><label
+    class="error"
+    >⚠️</label
+  ><br />
+
+  <button type="submit" [disabled]="!newBookForm.valid">Save</button>
+</form>

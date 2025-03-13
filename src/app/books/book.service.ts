@@ -18,4 +18,7 @@ export class BookService {
   updateBook(book: IBook) {
     return this.service.put<IBook>('api/' + book.isbn, book);
   }
+  createBook(book: IBook) {
+    return this.service.post<IBook>('api/', book);
+  }
 }
