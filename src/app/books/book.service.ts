@@ -15,4 +15,7 @@ export class BookService {
   getBook(isbn: string): Observable<IBook> {
     return this.service.get<IBook>('api/' + isbn);
   }
+  updateBook(book: IBook) {
+    return this.service.put<IBook>('api/' + book.isbn, book);
+  }
 }

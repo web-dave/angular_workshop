@@ -1,7 +1,7 @@
 import { Component, DestroyRef, inject, OnInit } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { IBook } from '../book';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { BookService } from '../book.service';
 import { AsyncPipe, JsonPipe } from '@angular/common';
 import { PagesPipe } from '../pages.pipe';
@@ -10,7 +10,7 @@ import { OrderBtnDirective } from './order-btn.directive';
 
 @Component({
   selector: 'app-book-details',
-  imports: [PagesPipe, AsyncPipe, OrderBtnDirective],
+  imports: [PagesPipe, AsyncPipe, OrderBtnDirective, RouterLink],
   templateUrl: './book-details.component.html',
   styleUrl: './book-details.component.scss',
 })

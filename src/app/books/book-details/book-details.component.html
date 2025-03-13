@@ -5,6 +5,7 @@
 <h5>{{ book.numPages | pages }}</h5>
 <!-- <h5>{{ transform(book.numPages) }}</h5> -->
 <img [src]="book.cover" [alt]="book.title" />
+<a routerLink="edit">Edit</a>
 } @else { Waiting.... }
 
 <!-- {{ book | json }} -->

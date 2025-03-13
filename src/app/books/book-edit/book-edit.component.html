@@ -1,0 +1,19 @@
+@if(book){
+<form #editForm="ngForm" (ngSubmit)="saveBook()">
+  <input
+    type="text"
+    name="title"
+    required
+    minlength="2"
+    [(ngModel)]="book.title"
+    #title="ngModel"
+  />
+  @if(!title.valid){
+  <span>Argh! nicht valide!</span>
+  }
+  <button type="submit" [disabled]="!editForm.valid">Save</button>
+</form>
+<pre>{{ editForm.value | json }}</pre>
+<hr />
+<pre>{{ book | json }}</pre>
+}
